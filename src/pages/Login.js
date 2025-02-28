@@ -1,3 +1,4 @@
+// src/pages/Login.js
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
@@ -13,32 +14,37 @@ function Login() {
     try {
       const { data } = await axios.post('http://localhost:8000/api/auth/login', { email, password });
       localStorage.setItem('token', data.token);
-      navigate('/'); // Redirecționează la pagina principală
+      alert('V-ati autentificat');
+      navigate('/');  // Redirecționează la pagina de Home
     } catch (err) {
-      setError('Email sau parola incorecta');
+      setError(err.response?.data?.message || 'Eroare la autentificare');
       console.error(err);
     }
   };
 
   return (
-    <div>
+    <div style={{ padding: '20px' }}>
       <h1>Autentificare</h1>
       {error && <p style={{ color: 'red' }}>{error}</p>}
       <form onSubmit={handleLogin}>
-        <input
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-        />
-        <input
-          type="password"
-          placeholder="Parola"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
+        <div>
+          <input
+            type="email"
+            placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
+        </div>
+        <div>
+          <input
+            type="password"
+            placeholder="Parolă"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
+        </div>
         <button type="submit">Login</button>
       </form>
     </div>
@@ -46,3 +52,4 @@ function Login() {
 }
 
 export default Login;
+

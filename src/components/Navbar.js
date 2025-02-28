@@ -15,7 +15,6 @@ function Navbar() {
         <li><Link to="/">Home</Link></li>
         <li><Link to="/register">Înregistrare</Link></li>
         <li><Link to="/login">Login</Link></li>
-        <li><Link to="/cart">Coș</Link></li>
         <li><Link to="/orders">Istoric Comenzi</Link></li>
         <li><button onClick={handleLogout}>Logout</button></li>
       </ul>
