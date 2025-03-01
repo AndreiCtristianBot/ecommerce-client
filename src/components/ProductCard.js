@@ -1,51 +1,51 @@
-// ProductCard.js
+// src/components/ProductCard.js
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function ProductCard({ product, onAddToCart }) {
-  // Verificăm dacă există un URL nevid
-  const hasImage =
-    product &&
-    product.image_url &&
-    product.image_url.trim() !== '';
+  const navigate = useNavigate();
 
-  // Verificăm dacă URL-ul începe cu "http://" sau "https://"
+  // Navighează la detaliile produsului atunci când se dă click pe card (excepție buton)
+  const handleCardClick = () => {
+    navigate(`/product/${product.id}`);
+  };
+
+  // Pentru buton, oprim propagarea evenimentului
+  const handleButtonClick = (e) => {
+    e.stopPropagation();
+    onAddToCart(product);
+  };
+
+  // Validare imagine
+  const hasImage = product && product.image_url && product.image_url.trim() !== '';
   const validImage =
     hasImage &&
     (product.image_url.startsWith('http://') || product.image_url.startsWith('https://'));
-
-  // Convertim prețul la număr
   const price = Number(product?.price) || 0;
 
   return (
-    <div
-      style={{
-        border: '1px solid #ccc',
-        margin: '10px',
-        padding: '10px',
-        width: '200px'
-      }}
-    >
-      {validImage ? (
+    <div className="product-card" onClick={handleCardClick}>
+      {validImage && (
         <img
           src={product.image_url}
           alt={product?.name || 'Produs fără nume'}
-          style={{ width: '100%', maxHeight: '150px', objectFit: 'cover' }}
-          onError={(e) => { e.target.style.display = 'none'; }}
         />
-      ) : null}
-      <h3>{product?.name || 'Fără nume'}</h3>
-      <p>{product?.description || 'Fără descriere'}</p>
-      <p>Preț: ${price.toFixed(2)}</p>
-      <button
-        onClick={() => product && onAddToCart(product)}
-        style={{ padding: '5px 10px', cursor: 'pointer' }}
-      >
-        Adaugă în coș
-      </button>
+      )}
+      <div className="product-card-body">
+        <div className="product-card-title">{product?.name || 'Fără nume'}</div>
+        <div className="product-card-price">Preț: ${price.toFixed(2)}</div>
+      </div>
+      <div className="product-card-footer">
+        <button className="btn" onClick={handleButtonClick}>
+          Adaugă în coș
+        </button>
+      </div>
     </div>
   );
 }
 
 export default ProductCard;
+
+
 
 

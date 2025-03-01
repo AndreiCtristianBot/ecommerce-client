@@ -1,9 +1,11 @@
 // src/pages/Login.js
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { AuthContext } from '../AuthContext';
 
 function Login() {
+  const { setToken } = useContext(AuthContext);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
@@ -14,12 +16,17 @@ function Login() {
     try {
       const { data } = await axios.post('http://localhost:8000/api/auth/login', { email, password });
       localStorage.setItem('token', data.token);
+      setToken(data.token); // Actualizează contextul
       alert('V-ati autentificat');
-      navigate('/');  // Redirecționează la pagina de Home
+      navigate('/');
     } catch (err) {
       setError(err.response?.data?.message || 'Eroare la autentificare');
       console.error(err);
     }
+  };
+
+  const handleGoogleLogin = () => {
+    window.location.href = 'http://localhost:8000/api/auth/google';
   };
 
   return (
@@ -47,9 +54,13 @@ function Login() {
         </div>
         <button type="submit">Login</button>
       </form>
+      <br />
+      <button onClick={handleGoogleLogin}>Login cu Google</button>
     </div>
   );
 }
 
 export default Login;
+
+
 

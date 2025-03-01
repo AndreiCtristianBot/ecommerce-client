@@ -1,0 +1,290 @@
+/* styles.css */
+
+/* Reset și bază */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  background-color: #f8f9fa;
+  color: #212529;
+  line-height: 1.6;
+}
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+.text-center {
+  text-align: center;
+}
+
+/* Navbar premium */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #ffffff;
+  border-bottom: 2px solid #dee2e6;
+  padding: 10px 20px;
+  position: relative;
+}
+.navbar .nav-links {
+  display: flex;
+  gap: 15px;
+}
+.navbar .nav-links a {
+  color: #212529;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: color 0.2s;
+}
+.navbar .nav-links a:hover,
+.navbar .nav-links a:focus {
+  color: #0d6efd;
+  outline: none;
+}
+.navbar .title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: center;
+  flex: 1;
+}
+.navbar .cart-container {
+  position: relative;
+  cursor: pointer;
+}
+.navbar .cart-icon {
+  font-size: 1.5rem;
+  color: #212529;
+}
+.navbar .cart-count {
+  background: #dc3545;
+  color: #fff;
+  border-radius: 50%;
+  padding: 2px 8px;
+  font-size: 0.8rem;
+  position: absolute;
+  top: -5px;
+  right: -10px;
+}
+
+/* Dropdown pentru coș */
+.cart-dropdown {
+  position: absolute;
+  right: 0;
+  top: 110%;
+  background: #fff;
+  border: 1px solid #ddd;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  width: 300px;
+  z-index: 1000;
+  display: none;
+  border-radius: 0.25rem;
+}
+.cart-dropdown.active {
+  display: block;
+}
+.cart-dropdown .dropdown-header {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+  font-weight: bold;
+  text-align: center;
+}
+.cart-dropdown ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  max-height: 300px;
+  overflow-y: auto;
+}
+.cart-dropdown ul li {
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.cart-dropdown ul li:last-child {
+  border-bottom: none;
+}
+.cart-dropdown .dropdown-footer {
+  padding: 10px;
+  text-align: center;
+  font-weight: bold;
+}
+
+/* Buton roșu pentru "Elimină" */
+.btn-danger {
+  background-color: #dc3545;
+  color: #fff;
+  border: none;
+  padding: 0.375rem 0.75rem;
+  font-size: 0.9rem;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  transition: background-color 0.15s ease-in-out;
+  align-self: flex-end;
+  margin-top: 5px;
+}
+.btn-danger:hover,
+.btn-danger:focus {
+  background-color: #c82333;
+  outline: none;
+}
+
+/* Buton "Comandă" full-width în dropdown */
+.btn-order {
+  display: block;
+  width: 100%;
+  padding: 0.75rem;
+  font-size: 1.1rem;
+  font-weight: bold;
+  background-color: #0d6efd;
+  color: #fff;
+  border: none;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  margin-top: 10px;
+  text-align: center;
+}
+.btn-order:hover,
+.btn-order:focus {
+  background-color: #0a58ca;
+  outline: none;
+}
+
+/* Product Card Styling */
+.product-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    background-color: #fff;
+    padding: 1rem;
+    margin: 0.5rem;
+    width: 250px;
+    transition: box-shadow 0.2s ease-in-out;
+}
+  
+.product-card:hover,
+.product-card:focus {
+    box-shadow: 0 0 0 0.2rem rgba(13,110,253,0.25);
+}
+  
+.product-card img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover;
+    border-radius: 0.25rem;
+}
+  
+.product-card-body {
+    flex: 1;
+    margin-top: 0.5rem;
+    text-align: left;
+}
+  
+.product-card-title {
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin: 0.5rem 0;
+  }
+  
+.product-card-price {
+    font-size: 1rem;
+    color: #0d6efd;
+    margin: 0.5rem 0;
+}
+
+.important {
+    background-color: #28a745;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.15s ease-in-out;
+    width: 100%;
+    padding: 0.5rem;
+    font-size: 1rem;
+    border: none;
+    border-radius: 0.25rem;
+}
+  
+.important:hover {
+    background-color: #218838;
+    outline: none;
+}
+.important:focus {
+    background-color: #196329;
+    outline: none;
+}
+  
+  
+  
+  /* Footer: for button placement */
+.product-card-footer {
+    margin-top: auto;
+    text-align: center;
+}
+  
+.product-card-footer .btn {
+    width: 100%;
+    padding: 0.5rem;
+    font-size: 1rem;
+    border: none;
+    border-radius: 0.25rem;
+    background-color: #28a745; /* o nuanță plăcută de verde */
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.15s ease-in-out;
+}
+
+.product-card img {
+    width: 100%;
+    height: 100%; /* crește înălțimea imaginii */
+    object-fit: cover;
+    border-radius: 0.25rem;
+  }
+  
+.product-card-footer .btn:hover,
+.product-card-footer .btn:focus {
+    background-color: #218838;
+    outline: none;
+}
+
+/* Exemplu de stilizare pentru Navbar fix */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000; /* Asigură-te că este deasupra altor elemente */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #ffffff;
+    border-bottom: 2px solid #dee2e6;
+    padding: 10px 20px;
+}
+  
+  /* Pentru a nu se suprapune conținutul sub navbar, adaugă o margine de top la containerul principal */
+body {
+    padding-top: 70px; /* Ajustează în funcție de înălțimea Navbar-ului */
+}
+  
+  
+
+/* Responsive */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+  }
+  .navbar .nav-links {
+    margin-top: 10px;
+  }
+}
+
+

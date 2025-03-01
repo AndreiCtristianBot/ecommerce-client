@@ -71,47 +71,6 @@ function ProductList({ cart, setCart }) {
           <p>Nu au fost găsite produse.</p>
         )}
       </div>
-
-      {/* Secțiunea de coș poate fi afișată și aici dacă dorești */}
-      <h2>Coș ({cart.length} produse)</h2>
-      {cart.length > 0 ? (
-        <div>
-          <ul>
-            {cart.map((item, index) => {
-              const price = Number(item.price) || 0;
-              return (
-                <li key={index} style={{ marginBottom: '10px' }}>
-                  {item.name} - ${price.toFixed(2)} x {item.quantity}
-                  <button
-                    onClick={() => handleRemoveFromCart(index)}
-                    style={{ marginLeft: '10px' }}
-                  >
-                    Elimină
-                  </button>
-                </li>
-              );
-            })}
-          </ul>
-          <h3>Total: ${total.toFixed(2)}</h3>
-          {cart.length > 0 && (
-            <button
-              onClick={() => {
-                const token = localStorage.getItem('token');
-                if (!token) {
-                  navigate('/login');
-                } else {
-                  navigate('/checkout');
-                }
-              }}
-              style={{ marginTop: '10px', padding: '8px 16px', fontSize: '16px' }}
-            >
-              Comandă
-            </button>
-          )}
-        </div>
-      ) : (
-        <p>Coșul este gol.</p>
-      )}
     </div>
   );
 }

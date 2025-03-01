@@ -1,4 +1,4 @@
-// Cart.js
+// src/components/Cart.js
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -8,39 +8,36 @@ function Cart({ cart, total, onRemoveFromCart }) {
 
   const handleOrder = () => {
     if (!token) {
-      // Dacă nu este autentificat, redirecționează la login
       navigate('/login');
     } else {
-      // Dacă este autentificat, navighează la pagina de checkout
       navigate('/checkout');
     }
   };
 
   return (
-    <div style={{ padding: '20px' }}>
-      <h1>Coșul de cumpărături</h1>
+    <div className="container" style={{ padding: '20px' }}>
+      <h1 className="text-center">Coșul de cumpărături</h1>
       {cart.length === 0 ? (
-        <p>Coșul este gol.</p>
+        <p className="text-center">Coșul este gol.</p>
       ) : (
         <div>
-          <ul>
+          <ul className="cart-list">
             {cart.map((item, index) => (
-              <li key={index} style={{ marginBottom: '10px' }}>
-                {item.name} - ${item.price.toFixed(2)} x {item.quantity}
-                <button
-                  onClick={() => onRemoveFromCart(index)}
-                  style={{ marginLeft: '10px' }}
-                >
+              <li key={index}>
+                {item.name} - ${Number(item.price).toFixed(2)} x {item.quantity}
+                <button className="btn-danger" onClick={() => onRemoveFromCart(index)} style={{ marginLeft: '10px' }}>
                   Elimină
                 </button>
               </li>
             ))}
           </ul>
-          <p>Total: ${total.toFixed(2)}</p>
+          <p className="text-center"><strong>Total: ${Number(total).toFixed(2)}</strong></p>
           {cart.length > 0 && (
-            <button onClick={handleOrder} style={{ marginTop: '10px' }}>
-              Comandă
-            </button>
+            <div className="text-center">
+              <button className="btn-order" onClick={handleOrder}>
+                Comandă
+              </button>
+            </div>
           )}
         </div>
       )}
@@ -49,4 +46,6 @@ function Cart({ cart, total, onRemoveFromCart }) {
 }
 
 export default Cart;
+
+
 
