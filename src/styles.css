@@ -212,6 +212,109 @@ body {
     border: none;
     border-radius: 0.25rem;
 }
+
+.google {
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 0 2em;
+  font-size: large;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-right: 20px;
+  padding-left: 20px;
+  cursor: pointer;
+}
+
+.google:hover {
+  background-color: rgb(249, 249, 249);
+}
+
+.google:focus {
+  background-color: rgb(243, 243, 243);
+}
+
+.login {
+  background-color: #1b2c6c;
+  color: #fff;
+  cursor: pointer;
+  border-radius: 3em 1em;
+  font-size: large;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-right: 20px;
+  padding-left: 20px;
+  border: 0px;
+}
+
+.login:hover {
+  background-color: #31489b;
+  color: #fff;
+  cursor: pointer;
+  border-radius: 3em 1em;
+  font-size: large;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-right: 20px;
+  padding-left: 20px;
+  border: 0px;
+}
+
+.login:focus {
+  background-color: #3951a8;
+  color: #fff;
+  cursor: pointer;
+  border-radius: 3em 1em;
+  font-size: large;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-right: 20px;
+  padding-left: 20px;
+  border: 0px;
+}
+
+.logout {
+  margin-left: 15px;
+  padding: 50px;
+  cursor: pointer;
+  background-color:  #b1d4ff;
+  border: 1px solid black;
+  border-radius: 10px;
+  font-size: large;
+}
+
+.logout:hover {
+  background-color:  #9ec8fb;
+  padding: 50px;
+  outline: none;
+}
+
+.logout:focus {
+  background-color:  #78b5ff;
+  padding: 50px;
+  outline: none;
+}
+
+.inapoi {
+  color: #000000;
+  background-color: #f0f0f0;
+  outline: none;
+  border-radius: 10px;
+  border: 0.1px solid black;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.inapoi:hover {
+  color: #000000;
+  background-color: #ddd;
+  outline: none;
+}
+
+.inapoi:focus {
+  color: #000000;
+  background-color: #cbcaca;
+  outline: none;
+}
   
 .important:hover {
     background-color: #218838;

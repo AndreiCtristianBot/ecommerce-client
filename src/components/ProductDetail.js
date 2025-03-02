@@ -133,7 +133,7 @@ Alte caracteristici video:	Procesor NQ4 AI Gen2, OLED Glare Free, Oled HDR PRO, 
 
   return (
     <div style={{ padding: '20px' }}>
-      <button onClick={() => navigate(-1)}>Înapoi</button>
+      <button onClick={() => navigate(-1)} className="inapoi">Înapoi</button>
       <div style={{ display: 'flex', gap: '20px', marginTop: '20px' }}>
         <img
           src={product.image_url || ''}

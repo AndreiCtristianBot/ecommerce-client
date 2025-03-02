@@ -52,10 +52,10 @@ function Login() {
             required
           />
         </div>
-        <button type="submit">Login</button>
+        <button type="submit" class="login">Login</button>
       </form>
       <br />
-      <button onClick={handleGoogleLogin}>Login cu Google</button>
+      <button onClick={handleGoogleLogin} className="google"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/800px-Google_%22G%22_logo.svg.png" alt="google logo" width="15px" height="15px"></img> Sign in with Google</button>
     </div>
   );
 }

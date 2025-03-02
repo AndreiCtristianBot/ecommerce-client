@@ -75,7 +75,7 @@ function Navbar({ cart, setCart }) {
           )}
         </div>
       </div>
-      {token && <button className="btn" onClick={handleLogout} style={{marginLeft: '15px', padding: '5px', cursor: 'hover'}}>Logout</button>}
+      {token && <button className="logout" onClick={handleLogout} style={{marginLeft: '15px', padding: '5px', cursor: 'hover'}}>Logout</button>}
     </header>
   );
 }
