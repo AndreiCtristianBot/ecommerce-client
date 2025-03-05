@@ -130,9 +130,12 @@ body {
   align-self: flex-end;
   margin-top: 5px;
 }
-.btn-danger:hover,
-.btn-danger:focus {
+.btn-danger:hover {
   background-color: #c82333;
+  outline: none;
+}
+.btn-danger:focus {
+  background-color: #ae1e2c;
   outline: none;
 }
 
@@ -151,9 +154,13 @@ body {
   margin-top: 10px;
   text-align: center;
 }
-.btn-order:hover,
-.btn-order:focus {
+.btn-order:hover {
   background-color: #0a58ca;
+  outline: none;
+}
+
+.btn-order:focus {
+  background-color: #0a53c1;
   outline: none;
 }
 
@@ -201,6 +208,31 @@ body {
     margin: 0.5rem 0;
 }
 
+.pagination-button {
+  padding: 10px;
+  margin: 0;
+  background-color: #fff;
+  color: #000;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.pagination-button.selected:focus {
+  background-color: #0d6efd;
+  color: #fff;
+  transition: background-color 0.15s ease-in-out;
+}
+
+.pagination-button:hover {
+  box-shadow: 0 0 0 0.1rem rgba(13,110,253,0.25);
+  background-color: #e8f4ff;
+  color: #000000;
+}
+
+
+
 .important {
     background-color: #28a745;
     color: #fff;
@@ -244,6 +276,8 @@ body {
   padding-right: 20px;
   padding-left: 20px;
   border: 0px;
+  margin-top: 15px;
+  margin-bottom: 15px;
 }
 
 .login:hover {
@@ -324,6 +358,27 @@ body {
     background-color: #196329;
     outline: none;
 }
+
+.trimit {
+    background-color: #28a745;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.15s ease-in-out;
+    width: 15%;
+    padding: 0.5rem;
+    font-size: 1rem;
+    border: none;
+    border-radius: 0.25rem;
+}
+
+.trimit:hover {
+    background-color: #218838;
+    outline: none;
+}
+.trimit:focus {
+    background-color: #196329;
+    outline: none;
+}
   
   
   
@@ -350,11 +405,16 @@ body {
     height: 100%; /* crește înălțimea imaginii */
     object-fit: cover;
     border-radius: 0.25rem;
+    cursor: pointer;
   }
   
-.product-card-footer .btn:hover,
-.product-card-footer .btn:focus {
+.product-card-footer .btn:hover {
     background-color: #218838;
+    outline: none;
+}
+
+.product-card-footer .btn:focus {
+    background-color: #1b752f;
     outline: none;
 }
 

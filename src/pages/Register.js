@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import "../styles.css";
 
 function Register() {
   const [name, setName] = useState('');
@@ -64,7 +65,7 @@ function Register() {
             required
           />
         </div>
-        <button type="submit">Înregistrează-te</button>
+        <button type="submit" className="login">Înregistrează-te</button>
       </form>
     </div>
   );

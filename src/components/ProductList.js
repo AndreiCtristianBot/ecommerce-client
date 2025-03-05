@@ -3,9 +3,12 @@ import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import ProductCard from './ProductCard';
 import { useNavigate } from 'react-router-dom';
+import '../styles.css'; // Importă CSS pentru paginare
 
 function ProductList({ cart, setCart }) {
   const [products, setProducts] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const productsPerPage = 28;
   const navigate = useNavigate();
   const isAdding = useRef(false);
 
@@ -23,7 +26,20 @@ function ProductList({ cart, setCart }) {
     fetchProducts();
   }, []);
 
-  // Funcția de adăugare în coș folosind starea globală
+  // Calculează indexul primului și ultimului produs pentru pagina curentă
+  const indexOfLastProduct = currentPage * productsPerPage;
+  const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
+  const currentProducts = products.slice(indexOfFirstProduct, indexOfLastProduct);
+
+  // Determină numărul total de pagini
+  const totalPages = Math.ceil(products.length / productsPerPage);
+
+  // Funcție pentru schimbarea paginii
+  const handlePageChange = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
+
+  // Funcția de adăugare în coș (neafectată)
   const handleAddToCart = (product) => {
     if (isAdding.current) return; // Previne dublarea apelurilor
     isAdding.current = true;
@@ -44,23 +60,34 @@ function ProductList({ cart, setCart }) {
     }, 0);
   };
 
-  // Funcția de eliminare din coș, care poate fi folosită și aici (dacă dorești să arăți și coșul în ProductList)
-  const handleRemoveFromCart = (indexToRemove) => {
-    setCart((prevCart) => prevCart.filter((_, i) => i !== indexToRemove));
-  };
-
-  // Calculăm totalul pe baza conținutului din coșul global
+  // Calculăm totalul pe baza conținutului din coșul global (neafectat)
   const total = cart.reduce(
     (sum, item) => sum + Number(item.price) * (item.quantity || 1),
     0
+  );
+  
+  const renderPagination = () => (
+    <div style={{ textAlign: 'center', marginTop: '20px' }}>
+      {Array.from({ length: totalPages }, (_, i) => i + 1).map((number) => (
+        <button
+          key={number}
+          onClick={() => handlePageChange(number)}
+          className={`pagination-button ${number === currentPage ? 'selected' : ''}`}
+        >
+          {number}
+        </button>
+      ))}
+    </div>
   );
 
   return (
     <div>
       <h2>Produse disponibile</h2>
+      {/* Paginația apare deasupra listei */}
+      {renderPagination()}
       <div style={{ display: 'flex', flexWrap: 'wrap' }}>
-        {products.length > 0 ? (
-          products.map((product) => (
+        {currentProducts.length > 0 ? (
+          currentProducts.map((product) => (
             <ProductCard
               key={product.id}
               product={product}
@@ -71,11 +98,15 @@ function ProductList({ cart, setCart }) {
           <p>Nu au fost găsite produse.</p>
         )}
       </div>
+      {/* Paginația apare și dedesubt */}
+      {renderPagination()}
     </div>
   );
 }
 
 export default ProductList;
+
+
 
 
 

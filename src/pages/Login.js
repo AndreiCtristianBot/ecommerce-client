@@ -1,4 +1,4 @@
-// src/pages/Login.js
+// Login.js
 import React, { useState, useContext } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
@@ -17,7 +17,7 @@ function Login() {
       const { data } = await axios.post('http://localhost:8000/api/auth/login', { email, password });
       localStorage.setItem('token', data.token);
       setToken(data.token); // Actualizează contextul
-      alert('V-ati autentificat');
+      alert('V-ați autentificat cu succes');
       navigate('/');
     } catch (err) {
       setError(err.response?.data?.message || 'Eroare la autentificare');
@@ -52,15 +52,23 @@ function Login() {
             required
           />
         </div>
-        <button type="submit" class="login">Login</button>
+        <button type="submit" className="login">Login</button>
       </form>
-      <br />
-      <button onClick={handleGoogleLogin} className="google"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/800px-Google_%22G%22_logo.svg.png" alt="google logo" width="15px" height="15px"></img> Sign in with Google</button>
+      <button onClick={handleGoogleLogin} className="google">
+        <img 
+          src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/800px-Google_%22G%22_logo.svg.png" 
+          alt="google logo" 
+          width="15px" 
+          height="15px"
+        /> 
+        Sign in with Google
+      </button>
     </div>
   );
 }
 
 export default Login;
+
 
 
 
