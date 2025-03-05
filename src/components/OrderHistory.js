@@ -1,9 +1,9 @@
-// OrderHistory.js - doar importuri pentru React, axios, și react-router-dom
+// OrderHistory.js - only imports for React, axios, and react-router-dom
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
-// Definim mapping-ul pentru etichetele codului postal
+// Mapping for postal code labels by country
 const postalCodeOptions = {
   SUA: { label: "ZIP Code", requiredLength: 5 },
   Germania: { label: "Postleitzahl", requiredLength: 5 },
@@ -26,7 +26,9 @@ function OrderHistory() {
     }
     const fetchOrders = async () => {
       try {
-        const { data } = await axios.get('http://localhost:8000/api/orders', {
+        // Use API URL from environment variable (fallback to localhost for development)
+        const apiUrl = process.env.REACT_APP_API_URL || 'http://localhost:8000';
+        const { data } = await axios.get(`${apiUrl}/api/orders`, {
           headers: { Authorization: `Bearer ${token}` }
         });
         console.log('Fetched orders:', data);
@@ -46,7 +48,8 @@ function OrderHistory() {
 
   const handleDelete = async (orderId) => {
     try {
-      await axios.delete(`http://localhost:8000/api/orders/${orderId}`, {
+      const apiUrl = process.env.REACT_APP_API_URL || 'http://localhost:8000';
+      await axios.delete(`${apiUrl}/api/orders/${orderId}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setOrders(prev => prev.filter(order => order.id !== orderId));
@@ -77,7 +80,10 @@ function OrderHistory() {
               <p>
                 <strong>Țară:</strong> {order.country || 'N/A'} |{' '}
                 <strong>
-                  {order.country === "SUA" ? "Stat" : order.country === "Canada" ? "Provincie/Teritoriu" : order.country === "Germania" ? "Land" : order.country === "Elveția" ? "Canton" : "Județ/Municipiu"}
+                  {order.country === "SUA" ? "Stat" : 
+                   order.country === "Canada" ? "Provincie/Teritoriu" : 
+                   order.country === "Germania" ? "Land" : 
+                   order.country === "Elveția" ? "Canton" : "Județ/Municipiu"}
                 :</strong> {order.county || 'N/A'} |{' '}
                 <strong>Oraș:</strong> {order.city || 'N/A'}
               </p>
@@ -122,6 +128,7 @@ function OrderHistory() {
 }
 
 export default OrderHistory;
+
 
 
 

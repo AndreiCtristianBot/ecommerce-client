@@ -15,7 +15,7 @@ function ProductList({ cart, setCart }) {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const { data } = await axios.get('http://localhost:8000/api/products');
+        const { data } = await axios.get('axios.get(`${process.env.REACT_APP_API_URL}/api/products`)');
         console.log('Fetched products:', data);
         setProducts(data);
       } catch (error) {

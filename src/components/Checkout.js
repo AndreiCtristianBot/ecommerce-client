@@ -272,7 +272,7 @@ function Checkout({ cart, total, setCart }) {
     };
     console.log("Datele trimise:", orderData);
     try {
-      const response = await axios.post('http://localhost:8000/api/orders', orderData, {
+      const response = await axios.post('axios.get(`${process.env.REACT_APP_API_URL}/api/products`)', orderData, {
         headers: { Authorization: `Bearer ${token}` },
       });
       console.log("Răspuns de la server:", response.data);
