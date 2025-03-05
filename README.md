@@ -18,7 +18,7 @@ This is the frontend of the e-commerce project, built with React. The applicatio
 1. **Clone the repository:**
 
    ```bash
-   git clone https://github.com/YOUR_USERNAME/ecommerce-client.git
+   git clone https://github.com/AndreiCtristianBot/ecommerce-client.git
    cd ecommerce-client
 
 2. **Install dependencies:**
