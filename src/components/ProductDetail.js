@@ -12,7 +12,8 @@ function ProductDetail({ onAddToCart }) {
   useEffect(() => {
     const fetchProductDetail = async () => {
       try {
-        const { data } = await axios.get(`http://localhost:8000/api/products/${id}`);
+        const apiUrl = process.env.REACT_APP_API_URL || 'http://localhost:8000';
+        const { data } = await axios.get(`${apiUrl}/api/products/${id}`);
         // Dacă nu există specificații, setăm valori implicite
         if (!data.specifications) {
           if (data.name === 'Apple iPhone 14') {

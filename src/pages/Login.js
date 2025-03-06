@@ -11,12 +11,15 @@ function Login() {
   const [error, setError] = useState('');
   const navigate = useNavigate();
 
+  // Define apiUrl from environment variable, fallback to localhost
+  const apiUrl = process.env.REACT_APP_API_URL || 'http://localhost:8000';
+
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const { data } = await axios.post('http://localhost:8000/api/auth/login', { email, password });
+      const { data } = await axios.post(`${apiUrl}/api/auth/login`, { email, password });
       localStorage.setItem('token', data.token);
-      setToken(data.token); // Actualizează contextul
+      setToken(data.token); // Update authentication context
       alert('V-ați autentificat cu succes');
       navigate('/');
     } catch (err) {
@@ -26,7 +29,7 @@ function Login() {
   };
 
   const handleGoogleLogin = () => {
-    window.location.href = 'http://localhost:8000/api/auth/google';
+    window.location.href = `${apiUrl}/api/auth/google`;
   };
 
   return (
@@ -68,6 +71,7 @@ function Login() {
 }
 
 export default Login;
+
 
 
 

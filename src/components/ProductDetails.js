@@ -9,17 +9,20 @@ function ProductDetails() {
   const navigate = useNavigate();
   const token = localStorage.getItem('token');
 
+  // Define apiUrl using environment variable (with fallback for development)
+  const apiUrl = process.env.REACT_APP_API_URL || 'http://localhost:8000';
+
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        const { data } = await axios.get(`http://localhost:5000/api/products/${id}`);
+        const { data } = await axios.get(`${apiUrl}/api/products/${id}`);
         setProduct(data);
       } catch (error) {
         console.error('Error fetching product:', error);
       }
     };
     fetchProduct();
-  }, [id]);
+  }, [id, apiUrl]);
 
   const handleAddToCart = async () => {
     if (!token) {
@@ -28,7 +31,7 @@ function ProductDetails() {
     }
     try {
       await axios.post(
-        'http://localhost:5000/api/cart',
+        `${apiUrl}/api/cart`,
         { productId: id, quantity },
         { headers: { Authorization: `Bearer ${token}` } }
       );

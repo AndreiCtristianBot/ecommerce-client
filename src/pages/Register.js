@@ -11,18 +11,21 @@ function Register() {
   const [error, setError] = useState('');
   const navigate = useNavigate();
 
+  // Define apiUrl from environment variable (fallback to localhost for development)
+  const apiUrl = process.env.REACT_APP_API_URL || 'http://localhost:8000';
+
   const handleRegister = async (e) => {
     e.preventDefault();
     try {
-      const { data } = await axios.post('http://localhost:8000/api/auth/register', {
+      const { data } = await axios.post(`${apiUrl}/api/auth/register`, {
         name,
         email,
         password,
       });
-      // Dacă API-ul returnează token, îl poți stoca sau redirecționa utilizatorul la login
+      // After registration, redirect user to login page
       navigate('/login');
     } catch (err) {
-      setError(err.response.data.message || 'Înregistrarea a eșuat');
+      setError(err.response?.data?.message || 'Înregistrarea a eșuat');
       console.error(err);
     }
   };
@@ -72,3 +75,4 @@ function Register() {
 }
 
 export default Register;
+
