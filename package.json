@@ -14,10 +14,10 @@
     "node": "18.x"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "npx react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+  "start": "react-scripts start",
+  "build": "pwd && npx react-scripts build",
+  "test": "react-scripts test",
+  "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": [
